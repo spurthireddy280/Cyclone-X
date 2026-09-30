@@ -111,7 +111,8 @@ export default function InteractiveMap({
 
     // Load runtime basemap configuration safely from server (never exposing Gemini keys)
     let isSubscribed = true;
-    fetch('/api/config/map')
+    const apiBase = import.meta.env.VITE_API_URL || '';
+    fetch(`${apiBase}/api/config/map`)
       .then(res => res.json())
       .then(config => {
         if (!isSubscribed || !mapInstanceRef.current) return;

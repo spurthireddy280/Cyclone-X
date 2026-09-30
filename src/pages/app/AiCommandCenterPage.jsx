@@ -230,7 +230,8 @@ export default function AiCommandCenterPage() {
     }, 750);
 
     try {
-      const response = await fetch('/api/analyze', {
+      const apiBase = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${apiBase}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

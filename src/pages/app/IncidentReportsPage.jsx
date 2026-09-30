@@ -79,7 +79,8 @@ export default function IncidentReportsPage() {
     setIsGenerating(true);
 
     try {
-      const response = await fetch('/api/report', {
+      const apiBase = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${apiBase}/api/report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
